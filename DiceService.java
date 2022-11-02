@@ -2,18 +2,13 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.io.*;
 
-public class DiceService
+public class DiceService implements Service
 {
     JLabel label;
     JComboBox numOfDice;
 
     public JPanel getGuiPanel()
     {
-        // Ёто самый важный метод.
-        // ќн описан в интерфейсе Service и вызываетс€, когда сервис выбирают из списка и загружают.
-        // ¬ методе getGuiPanel может происходить что угодно, но возвращать он должен виджет JPanel,
-        // который и представл€ет собой пользовательский интерфейс дл€ игры в кости.
-
         JPanel panel = new JPanel();
         JButton button = new JButton("Roll 'em!");
         String[] choices = {"1", "2", "3", "4", "5"};
@@ -30,7 +25,6 @@ public class DiceService
     {
         public void actionPerformed(ActionEvent event)
         {
-            // Ѕросаем кости
             String diceOutput = "";
             String selection = (String) numOfDice.getSelectedItem();
             int numOfDiceToRoll = Integer.parseInt(selection);
